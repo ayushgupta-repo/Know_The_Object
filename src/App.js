@@ -20,5 +20,25 @@ function App() {
     }, 10);
   };
 
+  const detect = async (net) => {
+    // Check data is available
+    if (
+      typeof webcamRef.current !== "undefined" && webcamRef.current !== null && webcamRef.current.video.readyState === 4
+    ) {
+      // Get Video Properties
+      const videoWidth = webcamRef.current.video.videoWidth;
+      const videoHeight = webcamRef.current.video.videoHeight;
+
+      // Set video height and width
+      webcamRef.current.video.width = videoWidth;
+      webcamRef.current.video.height = videoHeight;
+
+      // Set canvas height and width
+      webcamRef.current.width = videoWidth;
+      webcamRef.current.height = videoHeight;
+
+      
+    }
+  }
   
 }

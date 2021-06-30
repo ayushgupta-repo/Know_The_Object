@@ -26,6 +26,7 @@ function App() {
       typeof webcamRef.current !== "undefined" && webcamRef.current !== null && webcamRef.current.video.readyState === 4
     ) {
       // Get Video Properties
+      const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
 
@@ -37,8 +38,16 @@ function App() {
       webcamRef.current.width = videoWidth;
       webcamRef.current.height = videoHeight;
 
-      
+      // Make Detections
+      const obj = await net.detect(video);
+      console.log(obj);
+
+      // Draw mesh
+      const ctx = canvasRef.current.getContext("2d");
+
+      // Update drawing utility
+      drawRect(obj, ctx)
     }
-  }
+  };
   
 }

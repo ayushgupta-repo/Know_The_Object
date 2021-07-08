@@ -1,7 +1,7 @@
 export const drawRect = (detections, ctx) => {
   detections.forEach(prediction => {
     // Get preditction results
-    const [x, y, width, height] = prediction['bbox'];
+    const [x,y,width,height] = prediction['bbox'];
     const text = prediction['class'];
 
     // Set styling
